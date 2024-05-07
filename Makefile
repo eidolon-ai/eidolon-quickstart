@@ -1,4 +1,9 @@
-.PHONY: serve serve-dev
+.PHONY: serve serve-dev check
+
+include .env
+
+check: .env
+	@[[ -z "$OPENAI_API_KEY" ]] && (echo "🚨 Error: OPENAI_API_KEY is not set." && exit 1) || echo "👍 OPENAI_API_KEY is set."
 
 serve-dev: .make/poetry_install .env
 	poetry run eidolon-server -m local_dev resources
