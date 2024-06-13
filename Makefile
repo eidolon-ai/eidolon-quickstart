@@ -4,7 +4,7 @@ VERSION := $(shell grep -m 1 '^version = ' pyproject.toml | awk -F '"' '{print $
 SDK_VERSION := $(shell grep -m 1 '^eidolon-ai-sdk = ' pyproject.toml | awk -F '[="^]' '{print $$4}')
 REQUIRED_ENVS := OPENAI_API_KEY
 
-.PHONY: serve serve-dev check docker docker-bash docker-push _docker-push .env
+.PHONY: serve serve-dev check docker docker-bash docker-push _docker-push .env sync update
 
 serve-dev: .make/poetry_install .env
 	@echo "Starting Server..."
@@ -53,3 +53,12 @@ docker-push:
 _docker-push: docker
 	docker push ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}
 	docker push ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:${VERSION}
+
+update:
+	poetry add eidolon-ai-sdk@latest
+	poetry lock
+
+sync:
+	git remote add upstream https://github.com/eidolon-ai/agent-machine.git
+	git fetch upstream
+	git merge upstream/main
