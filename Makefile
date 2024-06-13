@@ -59,6 +59,11 @@ update:
 	poetry lock
 
 sync:
-	git remote add upstream https://github.com/eidolon-ai/agent-machine.git
+	@if git remote | grep -q upstream; then \
+		echo "upstream already exists"; \
+	else \
+		git remote add upstream https://github.com/eidolon-ai/agent-machine.git; \
+		echo "upstream added"; \
+	fi
 	git fetch upstream
 	git merge upstream/main
