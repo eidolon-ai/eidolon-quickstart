@@ -62,6 +62,5 @@ eidolon-cli actions converse --process-id $PID --body "Hi! I made you"
 
 You should see a response from your agent
 ```
-Hello! 🎉 I'm super excited to be here and help you out! What's on your mind today? 😊
-Agent transitioned to state: idle Available actions: ['converse', 'generate_title']
+Hello! 🎉 I'm super excited to be here and help you out!
 ```
