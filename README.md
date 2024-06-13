@@ -47,11 +47,21 @@ INFO - Server Started in 1.50s
 ### Try it out
 First download the Ediolon CLI
 ```bash
-pip install 'eidolon-ai-client[cli]'
+pip install 'eidolon-ai-client[cli]' -U
 ```
 
-The create an AgentProcess and run the converse action on it
+The create an AgentProcess
 ```bash
 export PID=$(eidolon-cli processes create --agent hello_world)
+```
+
+Now that we have started a conversation, we can converse with our agent
+```bash
 eidolon-cli actions converse --process-id $PID --body "Hi! I made you"
+```
+
+You should see a response from your agent
+```
+Hello! 🎉 I'm super excited to be here and help you out! What's on your mind today? 😊
+Agent transitioned to state: idle Available actions: ['converse', 'generate_title']
 ```
