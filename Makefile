@@ -6,13 +6,15 @@ REQUIRED_ENVS := OPENAI_API_KEY
 
 .PHONY: serve serve-dev check docker docker-bash docker-push _docker-push .env sync update
 
+ARGS ?=
+
 serve-dev: .make/poetry_install .env
 	@echo "Starting Server..."
-	@poetry run eidolon-server -m local_dev resources --dotenv .env
+	@poetry run eidolon-server -m local_dev resources --dotenv .env $(ARGS)
 
 serve: .make/poetry_install .env
 	@echo "Starting Server..."
-	@poetry run eidolon-server resources --dotenv .env
+	@poetry run eidolon-server resources --dotenv .env $(ARGS)
 
 .env: Makefile
 	@touch .env

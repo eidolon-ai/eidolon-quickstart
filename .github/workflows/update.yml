@@ -27,6 +27,8 @@ jobs:
           cache: 'poetry'
       - name: "Updating Dependencies"
         run: |
+          git config --global user.email "autosync@eidolonai.com"
+          git config --global user.name "autosync"
           if [ "${{ github.repository }}" == "eidolon-ai/agent-machine" ]; then
             make update
           else
