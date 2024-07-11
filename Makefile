@@ -18,9 +18,9 @@ serve: .make/poetry_install .env
 
 .env: Makefile
 	@touch .env
-	@source .env; \
+	@if [ -s .env ]; then . .env; fi; \
 	for var in $(REQUIRED_ENVS); do \
-		if [ -z "$${!var}" ]; then \
+		if [ -z "$$(eval echo \$$$$var)" ]; then \
 			read -p "💭 $$var (required): " input; \
 			if [ -n "$$input" ]; then \
 				echo "$$var=$$input" >> .env; \
@@ -35,7 +35,6 @@ serve: .make/poetry_install .env
 	@mkdir -p .make
 
 .make/poetry_install: .make poetry.lock
-	@poetry env use 3.11
 	poetry install
 	@touch .make/poetry_install
 
