@@ -57,7 +57,7 @@ _docker-push: docker
 
 update:
 	poetry add eidolon-ai-sdk@latest
-	poetry lock
+	poetry lock --no-update
 
 sync:
 	@if git remote | grep -q upstream; then \

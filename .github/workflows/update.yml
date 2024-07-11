@@ -9,7 +9,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  sync:
+  update:
+    if: github.repository == 'eidolon-ai/agent-machine'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -26,14 +27,27 @@ jobs:
           python-version: '3.11'
           cache: 'poetry'
       - name: "Updating Dependencies"
-        run: |
-          git config --global user.email "autosync@eidolonai.com"
-          git config --global user.name "autosync"
-          if [ "${{ github.repository }}" == "eidolon-ai/agent-machine" ]; then
-            make update
-          else
-            make sync
-          fi
+        run: make update
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "bumping eidolon version"
+
+  sync:
+    if: github.repository != 'eidolon-ai/agent-machine'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Install poetry
+        run: pipx install poetry
+      - name: "Syncing fork with upstream"
+        run: |
+          git config --global user.email "autosync@eidolonai.com"
+          git config --global user.name "autosync"
+          make sync
+          git push
