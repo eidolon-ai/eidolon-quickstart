@@ -19,7 +19,7 @@ serve: .make/poetry_install .env
 .env:
 	@touch .env
 	@for var in $(REQUIRED_ENVS); do \
-		if [ -z "$${!var}" ] && ! grep -q "^$$var=" .env; then \
+		if [ -z "$$(eval echo \$$$$var)" ] && ! grep -q "^$$var=" .env; then \
 			read -p "💭 $$var (required): " input; \
 			if [ -n "$$input" ]; then \
 				echo "$$var=$$input" >> .env; \
@@ -28,7 +28,7 @@ serve: .make/poetry_install .env
 				exit 1; \
 			fi; \
 		fi; \
-	done
+	done;
 
 .make:
 	@mkdir -p .make
