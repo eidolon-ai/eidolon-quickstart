@@ -16,7 +16,7 @@ serve: .make/poetry_install .env
 	@echo "Starting Server..."
 	@poetry run eidolon-server resources --dotenv .env $(ARGS)
 
-.env:
+.env: Makefile
 	@touch .env
 	@for var in $(REQUIRED_ENVS); do \
 		if [ -z "$$(eval echo \$$$$var)" ] && ! grep -q "^$$var=" .env; then \
@@ -28,7 +28,9 @@ serve: .make/poetry_install .env
 				exit 1; \
 			fi; \
 		else \
-			echo "$$var=$$(eval echo \$$$$var)" >> .env; \
+			if ! grep -q "^$$var=" .env; then \
+				echo "$$var=$$(eval echo \$$$$var)" >> .env; \
+			fi; \
 		fi; \
 	done;
 
@@ -43,7 +45,10 @@ poetry.lock: pyproject.toml
 	@poetry lock --no-update
 	@touch poetry.lock
 
-docker: poetry.lock
+check-docker-daemon:
+	@docker info >/dev/null 2>&1 || (echo "🚨 Error: Docker daemon is not running\n🛟 For help installing or running docker, visit https://docs.docker.com/get-docker/" >&2 && exit 1)
+
+docker: poetry.lock check-docker-daemon
 	docker build --build-arg EIDOLON_VERSION=${SDK_VERSION} -t ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:latest -t ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:${VERSION} .
 
 docker-serve: docker .env
