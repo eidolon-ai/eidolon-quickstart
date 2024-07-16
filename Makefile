@@ -27,6 +27,8 @@ serve: .make/poetry_install .env
 				echo "🚨 Error: $$var is required"; \
 				exit 1; \
 			fi; \
+		else \
+			echo "$$var=$$(eval echo \$$$$var)" >> .env; \
 		fi; \
 	done;
 
@@ -43,6 +45,9 @@ poetry.lock: pyproject.toml
 
 docker: poetry.lock
 	docker build --build-arg EIDOLON_VERSION=${SDK_VERSION} -t ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:latest -t ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:${VERSION} .
+
+docker-serve: docker .env
+	docker run -p 8080:8080 --env-file .env --mount src=$$(pwd)/resources,target=/bound_resources/,type=bind ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:latest /bound_resources -m local_dev
 
 docker-bash: docker
 	docker run --rm -it --entrypoint bash ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:latest
