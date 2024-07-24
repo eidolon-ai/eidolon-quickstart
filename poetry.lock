@@ -1525,13 +1525,13 @@ gmpy2 = ["gmpy2"]
 
 [[package]]
 name = "eidolon-ai-client"
-version = "0.1.29"
+version = "0.1.30"
 description = "Eidolon python client and CLI"
 optional = false
 python-versions = "<3.13,>=3.8"
 files = [
-    {file = "eidolon_ai_client-0.1.29-py3-none-any.whl", hash = "sha256:7deb7acd65688eb6165c6dcdd486e4286e559631446b422cb94eb0a506f4b394"},
-    {file = "eidolon_ai_client-0.1.29.tar.gz", hash = "sha256:bbd4a990e64b0b6bdeb2d714e9c586a633840f89aa5a2fcdd94c14f7fb4a464f"},
+    {file = "eidolon_ai_client-0.1.30-py3-none-any.whl", hash = "sha256:877eb78e7dabb989c85bc30eb17de098804fa6fcb8645a3f6d1721d710da1fe3"},
+    {file = "eidolon_ai_client-0.1.30.tar.gz", hash = "sha256:623d088fe149f95a0524fcc7afeaf6bb7dc00e8c2ee5efb5319a2ea2d34e491f"},
 ]
 
 [package.dependencies]
@@ -1564,13 +1564,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.97"
+version = "0.1.98"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.97-py3-none-any.whl", hash = "sha256:0af30caa681b5f0069bf13bfdbc366064260283621f0709cded151f9d94b9dfa"},
-    {file = "eidolon_ai_sdk-0.1.97.tar.gz", hash = "sha256:ac2b2f7d1b78894ef49e4599647418d4e4eb14bdb62622e31f86fd2f363479ee"},
+    {file = "eidolon_ai_sdk-0.1.98-py3-none-any.whl", hash = "sha256:bfb77174739e2eb2e361863c501994cde538d90ffa805e3995ef9c6daf6fbf65"},
+    {file = "eidolon_ai_sdk-0.1.98.tar.gz", hash = "sha256:a151b3ced66ddeaee98771954609eeca5bbd66da07ddb3d00c345af764dfdff3"},
 ]
 
 [package.dependencies]
@@ -1585,7 +1585,7 @@ boto3 = ">=1.34.74,<2.0.0"
 boto3-stubs = {version = ">=1.34.74,<2.0.0", extras = ["essential"]}
 chromadb = ">=0.4.18"
 dill = ">=0.3.8,<0.4.0"
-eidolon-ai-client = ">=0.1.29,<0.2.0"
+eidolon-ai-client = ">=0.1.30,<0.2.0"
 eidolon-ai-mistralai = ">=0.1.6a,<0.2.0"
 eidolon-ai-usage-client = ">=0.1.8,<0.2.0"
 esprima = ">=4.0.1,<5.0.0"
@@ -6589,4 +6589,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "bd4415913c0acef41571aee43a61a35793d96e3d0a04d345ded3892881dcd986"
+content-hash = "c012eddaf260f394bc5a106055f8336feb78102568d6d301decefd2f94fb5526"
