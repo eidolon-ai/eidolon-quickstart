@@ -1,6 +1,5 @@
 ARG EIDOLON_VERSION
 FROM python:3.11-slim as builder
-RUN touch bar
 RUN pip install poetry
 RUN poetry config virtualenvs.create false --local
 COPY pyproject.toml pyproject.toml
@@ -13,7 +12,6 @@ RUN poetry export --without-hashes --format=requirements.txt > dist/requirements
 RUN poetry build
 
 FROM docker.io/eidolonai/sdk_base:$EIDOLON_VERSION as agent-machine-base
-RUN touch bar
 
 # First copy builder requirements so dependency cache layer is cached
 COPY --from=builder dist/requirements.txt /tmp/agent-machine/requirements.txt
