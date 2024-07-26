@@ -25,6 +25,7 @@ RUN pip install /tmp/agent-machine/*.whl
 FROM agent-machine-base as agent-machine
 # Finally copy resources over since they will mutate most frequently
 COPY resources/ /app/resources/
+COPY metrics.json /app/metrics.json
 
 FROM agent-machine
 WORKDIR /app
