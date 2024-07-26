@@ -33,6 +33,10 @@ serve: .make/poetry_install .env
 			fi; \
 		fi; \
 	done;
+	@ANON_ID=$$(hostname | { { md5sum 2>/dev/null || md5 2>/dev/null || shasum -a 256 2>/dev/null || sha256sum 2>/dev/null; } | awk '{print $$1}' || echo "unknown"; }) && \
+	if ! grep -q "^POSTHOG_ID=" .env; then \
+		echo "POSTHOG_ID=$$ANON_ID" >> .env; \
+	fi;
 
 .make:
 	@mkdir -p .make
