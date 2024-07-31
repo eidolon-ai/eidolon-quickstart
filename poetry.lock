@@ -1564,13 +1564,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.105"
+version = "0.1.106"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.105-py3-none-any.whl", hash = "sha256:a08cfce390101775496a18813bc2067bbf80fdb01d28d439c46aa5cd985ed753"},
-    {file = "eidolon_ai_sdk-0.1.105.tar.gz", hash = "sha256:7db307655fb06b652d7bd03af4819cc4b26076f8868861edb391d1c37ee582f7"},
+    {file = "eidolon_ai_sdk-0.1.106-py3-none-any.whl", hash = "sha256:2c74f82a506443b0bbb1a40f09093ad26d9e3ae2892422e5bb8ae6770f1da49f"},
+    {file = "eidolon_ai_sdk-0.1.106.tar.gz", hash = "sha256:bac35db8cc221b228af5c34408e49bd93a6379d9ae76d5ff6d3773d6ba433cea"},
 ]
 
 [package.dependencies]
@@ -6589,4 +6589,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "e3b77bbeb54eb2cb29b8d3e4d35a3f1f37bc1999a5f54f2a1ed51f08655dc279"
+content-hash = "4a3f5d613aca116009c57780aad9cb5b532e923eafcc683bf703ceaf27e486f6"
