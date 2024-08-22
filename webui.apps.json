@@ -1,0 +1,9 @@
+{
+  "dev-tool": {
+    "name": "Eidolon Developer Tool",
+    "description": "The developer tools can be used to test and debug any Eidolon operation.",
+    "image": "image.webp",
+    "type": "dev",
+    "params": {}
+  }
+}

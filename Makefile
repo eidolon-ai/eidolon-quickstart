@@ -4,7 +4,7 @@ VERSION := $(shell grep -m 1 '^version = ' pyproject.toml | awk -F '"' '{print $
 SDK_VERSION := $(shell grep -m 1 '^eidolon-ai-sdk = ' pyproject.toml | awk -F '[="^]' '{print $$4}')
 REQUIRED_ENVS := OPENAI_API_KEY
 
-.PHONY: serve serve-dev check docker docker-bash docker-push _docker-push .env sync update
+.PHONY: serve serve-dev check docker-serve .env sync update
 
 ARGS ?=
 
@@ -49,28 +49,21 @@ poetry.lock: pyproject.toml
 	@poetry lock --no-update
 	@touch poetry.lock
 
+Dockerfile: pyproject.toml
+	@sed -i '' 's/^ARG EIDOLON_VERSION=.*/ARG EIDOLON_VERSION=${SDK_VERSION}/' Dockerfile
+	@echo "Updated Dockerfile with EIDOLON_VERSION=${SDK_VERSION}"
+
+
 check-docker-daemon:
 	@docker info >/dev/null 2>&1 || (echo "🚨 Error: Docker daemon is not running\n🛟 For help installing or running docker, visit https://docs.docker.com/get-docker/" >&2 && exit 1)
 
-docker: poetry.lock check-docker-daemon
-	docker build --build-arg EIDOLON_VERSION=${SDK_VERSION} -t ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:latest -t ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:${VERSION} .
-
-docker-serve: docker .env
-	docker run -p 8080:8080 --env-file .env --mount src=$$(pwd)/resources,target=/bound_resources/,type=bind ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:latest /bound_resources/ -m local_dev
-
-docker-bash: docker
-	docker run --rm -it --entrypoint bash ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:latest
-
-docker-push:
-	@docker manifest inspect $(DOCKER_NAMESPACE)/${DOCKER_REPO_NAME}:$(VERSION) >/dev/null && echo "Image exists" || $(MAKE) _docker-push
-
-_docker-push: docker
-	docker push ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}
-	docker push ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:${VERSION}
+docker-serve: .env check-docker-daemon poetry.lock
+	@docker-compose up
 
 update:
 	poetry add eidolon-ai-sdk@latest
 	poetry lock --no-update
+	$(MAKE) Dockerfile
 
 sync:
 	@if git remote | grep -q upstream; then \

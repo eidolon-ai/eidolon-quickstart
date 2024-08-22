@@ -1,0 +1,31 @@
+services:
+  agent-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    develop:
+      watch:
+        - path: ./components
+          action: rebuild
+        - path: ./pyproject.toml
+          action: rebuild
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - ./resources:/bound_resources
+    command: /bound_resources/ -m local_dev --reload
+
+  webui:
+    image: eidolonai/webui:latest
+    environment:
+      - NEXTAUTH_SECRET=secret
+      - EIDOLON_SERVER=http://agent-server:8080
+      - EIDOLON_APP_REGISTRY_LOC=/app/apps/eidolon-ui2/eidolon-apps-override.json
+    volumes:
+      - ./webui.apps.json:/app/apps/eidolon-ui2/eidolon-apps-override.json
+    ports:
+      - "3000:3000"
+    depends_on:
+      - agent-server
