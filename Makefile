@@ -49,7 +49,7 @@ poetry.lock: pyproject.toml
 	@touch poetry.lock
 
 Dockerfile: pyproject.toml
-	@sed -i '' 's/^ARG EIDOLON_VERSION=.*/ARG EIDOLON_VERSION=${SDK_VERSION}/' Dockerfile
+	@sed -e 's/^ARG EIDOLON_VERSION=.*/ARG EIDOLON_VERSION=${SDK_VERSION}/' Dockerfile > Dockerfile.tmp && mv Dockerfile.tmp Dockerfile
 	@echo "Updated Dockerfile with EIDOLON_VERSION=${SDK_VERSION}"
 
 check-docker-daemon:
