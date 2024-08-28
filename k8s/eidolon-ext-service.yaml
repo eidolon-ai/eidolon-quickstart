@@ -1,0 +1,14 @@
+# This service makes the eidolon server available to your local dev environment. It is not intended for production use.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: eidolon-ext-service
+  labels:
+    app: eidolon
+spec:
+  type: NodePort
+  ports:
+  - port:     8080   # Port exposed within the cluster
+  selector:
+    app: eidolon

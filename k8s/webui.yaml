@@ -1,0 +1,49 @@
+# Description: This file contains the Kubernetes deployment configuration for the Eidolon WebUI service.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eidolon-webui-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eidolon-webui
+  template:
+    metadata:
+      labels:
+        app: eidolon-webui
+    spec:
+      volumes:
+      - name: config-volume
+        configMap:
+          name: webui-apps-config
+      containers:
+      - name: eidolon-webui
+        image: docker.io/eidolonai/webui:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/apps/eidolon-ui2/eidolon-apps-override.json
+          subPath: webui.apps.json
+        imagePullPolicy: Always
+        env:
+          - name: EIDOLON_AUTH_PROVIDERS
+            value: ""
+          - name: NEXTAUTH_SECRET
+            value: "mysecret"
+          - name: EIDOLON_SERVER
+            value: "http://eidolon-service:8080"
+          - name: EIDOLON_APP_REGISTRY_LOC
+            value: "/app/apps/eidolon-ui2/eidolon-apps-override.json"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eidolon-webui-service
+  labels:
+    app: eidolon-webui
+spec:
+  type: NodePort
+  ports:
+  - port: 3000          # Port exposed within the cluster
+  selector:
+    app: eidolon-webui

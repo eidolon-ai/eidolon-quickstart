@@ -20,7 +20,7 @@ git clone https://github.com/eidolon-ai/eidolon-quickstart.git
 cd eidolon-quickstart
 ```
 
-### Run your AgentMachine
+### Run your Agent Server in Docker
 
 Then run the server using docker, use the following command:
 
@@ -63,4 +63,41 @@ eidolon-cli actions converse --process-id $PID --body "Hi! I made you"
 You should see a response from your agent
 ```
 Hello! 🎉 I'm super excited to be here and help you out!
+```
+
+## Running the server in K8s
+
+### Prerequisites
+
+WARNING: This will work for local k8s environments only. See [Readme.md in the k8s directory](./k8s/Readme.md) if you are using this against a cloud based k8s environment.
+
+To use kubernetes for local development, you will need to have the following installed:
+* [Docker](https://docs.docker.com/get-docker/)
+* [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
+* [Helm](https://helm.sh/docs/intro/install/)
+
+### Installation
+
+Make sure your kubernetes environment is set up properly and install the Eidolon k8s operator.
+
+```bash
+make k8s-operator
+```
+
+This will install the Eidolon operator in your k8s cluster. **This only needs to be done once.**
+
+Next install the Eidolon resources. This will create an Eidolon machine and an Eidolon agent in your cluster, start them, and tail the logs:
+
+```bash
+make k8s-serve
+```
+
+If the server starts successfully, you should see the following output:
+```
+Deployment is ready. Tailing logs from new pods...
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO - Building machine 'local-dev'
+INFO - Starting agent 'hello-world'
+INFO - Server Started in 0.86s
 ```

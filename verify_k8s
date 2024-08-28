@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Initialize variables
+QUIET=false
+FAILED=false
+DEFAULT_NAMESPACE="default"
+NAMESPACE=""
+
+# Function to check permissions
+check_permission() {
+    local resource=$1
+    local verb=$2
+    local namespace=$3
+    local api_group=$4
+
+    if [[ -n $namespace ]]; then
+        kubectl auth can-i $verb $resource --namespace=$namespace ${api_group:+"-n $namespace"} > /dev/null 2>&1
+    else
+        kubectl auth can-i $verb $resource ${api_group:+-A} > /dev/null 2>&1
+    fi
+
+    if [ $? -eq 0 ]; then
+        $QUIET || echo -e "${GREEN}✓${NC} Permission to $verb $resource${namespace:+ in namespace $namespace}${api_group:+ (API group: $api_group)}"
+    else
+        FAILED=true
+        echo -e "${RED}✗${NC} No permission to $verb $resource${namespace:+ in namespace $namespace}${api_group:+ (API group: $api_group)}"
+    fi
+}
+
+# Parse command line options
+while getopts ":qn:" opt; do
+  case ${opt} in
+    q )
+      QUIET=true
+      ;;
+    n )
+      NAMESPACE=$OPTARG
+      ;;
+    \? )
+      echo "Invalid option: $OPTARG" 1>&2
+      exit 1
+      ;;
+    : )
+      echo "Invalid option: $OPTARG requires an argument" 1>&2
+      exit 1
+      ;;
+  esac
+done
+shift $((OPTIND -1))
+
+# Set namespace
+NAMESPACE=${NAMESPACE:-$DEFAULT_NAMESPACE}
+
+$QUIET || echo -e "\n${YELLOW}Checking cluster-level permissions:${NC}"
+check_permission "customresourcedefinitions" "create" "" "apiextensions.k8s.io"
+check_permission "clusterroles" "create" "" "rbac.authorization.k8s.io"
+check_permission "clusterrolebindings" "create" "" "rbac.authorization.k8s.io"
+
+$QUIET || echo -e "\n${YELLOW}Checking namespace-level permissions in $NAMESPACE:${NC}"
+check_permission "deployments" "create" "$NAMESPACE" "apps"
+check_permission "services" "create" "$NAMESPACE"
+check_permission "serviceaccounts" "create" "$NAMESPACE"
+check_permission "roles" "create" "$NAMESPACE" "rbac.authorization.k8s.io"
+check_permission "rolebindings" "create" "$NAMESPACE" "rbac.authorization.k8s.io"
+check_permission "configmaps" "create" "$NAMESPACE"
+
+$QUIET || echo -e "\n${YELLOW}Checking additional permissions:${NC}"
+check_permission "namespaces" "list" ""
+
+if $FAILED; then
+    echo -e "\n${RED}Error: Some permission checks failed. Please review the output above.${NC}"
+    exit 1
+else
+    $QUIET || echo -e "\n${GREEN}All permission checks passed successfully.${NC}"
+    exit 0
+fi

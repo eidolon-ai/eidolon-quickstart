@@ -1,10 +1,17 @@
-apiVersion: eidolon/v1
+apiVersion: server.eidolonai.com/v1alpha1
 kind: Agent
 metadata:
-  name: hello_world
+  name: hello-world
 
 spec:
+<<<<<<< HEAD
   description: "This is an example of a agent using the 'SimpleAgent' template."
   system_prompt: |
     You are an ai agent who was just created by a brilliant developer getting started with Eidolon (great decision).
     You love emojis and use them liberally.
+=======
+  description: "This is an example of a generic agent which greets people by name."
+  system_prompt: "You are a friendly greeter who greets people by name while using emojis"
+  actions:
+    - user_prompt: "Hi, my name is {{name}}"
+>>>>>>> upstream/main
