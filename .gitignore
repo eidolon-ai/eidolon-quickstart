@@ -3,3 +3,4 @@
 .make/
 .env
 *.iml
+__pycache__/
