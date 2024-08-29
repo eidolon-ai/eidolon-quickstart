@@ -1,7 +1,7 @@
 name: Synchronize
 on:
   schedule:
-    - cron: '0 * * * *'  # every hour
+    - cron: '0 14 * * *'  # daily at 2pm utc / 11am est / 8am pst
   workflow_dispatch:
 
 concurrency:
