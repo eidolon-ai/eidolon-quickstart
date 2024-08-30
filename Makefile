@@ -15,6 +15,9 @@ serve: .make/poetry_install .env
 	@echo "Starting Server..."
 	@poetry run eidolon-server resources --dotenv .env $(ARGS)
 
+test: .make/poetry_install .env
+	@poetry run pytest tests $(ARGS)
+
 .env: Makefile
 	@touch .env
 	@for var in $(REQUIRED_ENVS); do \
