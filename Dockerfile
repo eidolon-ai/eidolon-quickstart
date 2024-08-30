@@ -1,4 +1,4 @@
-ARG EIDOLON_VERSION=0.1.114
+ARG EIDOLON_VERSION=0.1.116
 FROM python:3.11-slim as builder
 RUN pip install poetry
 RUN poetry config virtualenvs.create false --local
@@ -36,4 +36,4 @@ USER eidolon
 EXPOSE 8080
 ENV PYTHONUNBUFFERED 1
 ENTRYPOINT ["eidolon-server"]
-CMD ["resources"]
+CMD ["resources", "--fail-on-bad-agent"]

@@ -1,6 +1,6 @@
 DOCKER_REPO_NAME := my-eidolon-project
 VERSION := $(shell grep -m 1 '^version = ' pyproject.toml | awk -F '"' '{print $$2}')
-SDK_VERSION := $(shell grep -m 1 '^eidolon-ai-sdk = ' pyproject.toml | sed -E 's/^eidolon-ai-sdk = "(\^?)([0-9]+\.[0-9]+\.[0-9]+)".*/\2/')
+SDK_VERSION := $(shell awk '/^name = "eidolon-ai-sdk"$$/{f=1} f&&/^version = /{gsub(/"|,/,"",$$3); print $$3; exit}' poetry.lock)
 REQUIRED_ENVS := OPENAI_API_KEY
 
 .PHONY: serve serve-dev check docker-serve .env sync update docker-build k8s-operator check-kubectl check-helm check-cluster-running verify-k8s-permissions check-install-operator k8s-serve k8s-env
