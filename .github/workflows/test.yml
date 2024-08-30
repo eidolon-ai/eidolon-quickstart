@@ -25,6 +25,8 @@ jobs:
           python-version: '3.12'
           cache: 'poetry'
       - run: poetry install
+      - run: |
+          set +o pipefail
+          yes TESTVALUE | make .env
+          set -o pipefail
       - run: poetry run pytest
-        env:
-          OPENAI_API_KEY: intentionally_unused
