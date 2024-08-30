@@ -15,7 +15,7 @@ services:
       - .env
     volumes:
       - ./resources:/bound_resources
-    command: /bound_resources/ -m local_dev --reload --fail-on-bad-agent
+    command: /bound_resources/ -m local_dev --reload --fail-on-bad-agent true
 
   webui:
     image: eidolonai/webui:latest
