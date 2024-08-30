@@ -54,7 +54,10 @@ jobs:
       - name: Install poetry
         run: pipx install poetry
       - name: Syncing fork with upstream
-        run: make sync
+        run: |
+          git config --global user.email "autosync@eidolonai.com"
+          git config --global user.name "autosync"
+          make sync
       - id: git-diff
         run: git diff --quiet HEAD || echo "changes=true" >> $GITHUB_OUTPUT
       - id: test
@@ -62,7 +65,4 @@ jobs:
         uses: ./.github/start-server
       - name: Push Sync
         if: steps.test.outcome == 'success'
-        run: |
-          git config --global user.email "autosync@eidolonai.com"
-          git config --global user.name "autosync"
-          git push
+        run: git push
