@@ -32,13 +32,3 @@ runs:
           fi
           sleep 1
         done
-    - name: Capture Docker Compose logs
-      if: failure()
-      shell: bash
-      run: docker compose logs > docker-compose-logs.txt
-    - name: Upload Docker Compose logs
-      if: failure()
-      uses: actions/upload-artifact@v2
-      with:
-        name: docker-compose-logs
-        path: docker-compose-logs.txt
