@@ -15,11 +15,11 @@ FROM docker.io/eidolonai/sdk_base:$EIDOLON_VERSION as agent-machine-base
 
 # First copy builder requirements so dependency cache layer is cached
 COPY --from=builder dist/requirements.txt /tmp/agent-machine/requirements.txt
-RUN pip install -r /tmp/agent-machine/requirements.txt
+RUN pip install -r /tmp/agent-machine/requirements.txt --no-cache --no-deps
 
 # Then install poetry project wheel since it will change more frequently
 COPY --from=builder dist/*.whl /tmp/agent-machine/
-RUN pip install /tmp/agent-machine/*.whl
+RUN pip install /tmp/agent-machine/*.whl  --no-cache --no-deps
 
 
 FROM agent-machine-base as agent-machine
