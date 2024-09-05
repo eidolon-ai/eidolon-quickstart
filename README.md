@@ -2,7 +2,7 @@
 
 This project serves as a template for individuals interested in building agents with Eidolon.
 
-For a detailed guide, check out the [quickstart walkthrough](https://www.eidolonai.com/docs/prereq/) on our website.
+For a detailed guide, check out the [quickstart walkthrough](https://www.eidolonai.com/docs/quickstart) on our website.
 
 ## Directory Structure
 
