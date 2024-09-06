@@ -3,4 +3,5 @@
 .make/
 .env
 *.iml
+container_logs.txt
 __pycache__/
