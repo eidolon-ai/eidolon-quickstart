@@ -35,6 +35,7 @@ This command will download the dependencies required to run your agent machine a
 "dev-mode".
 
 If the server starts successfully, you should see the following output:
+
 ```
 Starting Server...
 INFO:     Started server process [34623]
@@ -72,11 +73,19 @@ Hello! 🎉 I'm super excited to be here and help you out!
 WARNING: This will work for local k8s environments only. See [Readme.md in the k8s directory](./k8s/Readme.md) if you are using this against a cloud based k8s environment.
 
 To use kubernetes for local development, you will need to have the following installed:
-* [Docker](https://docs.docker.com/get-docker/)
-* [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
-* [Helm](https://helm.sh/docs/intro/install/)
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
+- [Helm](https://helm.sh/docs/intro/install/)
 
 ### Installation
+
+If you are using Minikube, run the following commands before any make commands:
+
+```bash
+alias kubectl="minikube kubectl --"
+eval $(minikube docker-env)
+```
 
 Make sure your kubernetes environment is set up properly and install the Eidolon k8s operator.
 
@@ -93,6 +102,7 @@ make k8s-serve
 ```
 
 If the server starts successfully, you should see the following output:
+
 ```
 Deployment is ready. Tailing logs from new pods...
 INFO:     Started server process [1]
