@@ -1452,13 +1452,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.123"
+version = "0.1.124"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.123-py3-none-any.whl", hash = "sha256:df6bf97e990bca29474b98c7fd20af311e2979be8e7bac481493052756fdd09f"},
-    {file = "eidolon_ai_sdk-0.1.123.tar.gz", hash = "sha256:715ec83b418dee01169cd692fca052260eef3961078a2d32d854586b37522f05"},
+    {file = "eidolon_ai_sdk-0.1.124-py3-none-any.whl", hash = "sha256:6e73e432f8e69fb9613ab6d33fb3887cfb7f8b71abd355b6b07cbe983da7273e"},
+    {file = "eidolon_ai_sdk-0.1.124.tar.gz", hash = "sha256:8d563f6522873f2da1efe958bea4d21c0c064b04243e830458a8d448e5f3e915"},
 ]
 
 [package.dependencies]
@@ -1474,7 +1474,7 @@ chromadb = ">=0.4.18"
 dill = ">=0.3.8,<0.4.0"
 eidolon-ai-client = ">=0.1.35,<0.2.0"
 eidolon-ai-mistralai = ">=0.1.6a,<0.2.0"
-eidolon-ai-usage-client = ">=0.1.8,<0.2.0"
+eidolon-ai-usage-client = ">=0.1.9,<0.2.0"
 esprima = ">=4.0.1,<5.0.0"
 eval-type-backport = ">=0.2.0,<0.3.0"
 fastapi = ">=0.109.0"
@@ -1515,19 +1515,18 @@ all = ["playwright (>=1.43.0,<2.0.0)"]
 
 [[package]]
 name = "eidolon-ai-usage-client"
-version = "0.1.8"
+version = "0.1.9"
 description = ""
 optional = false
 python-versions = "<3.13,>=3.8"
 files = [
-    {file = "eidolon_ai_usage_client-0.1.8-py3-none-any.whl", hash = "sha256:a9aadc86ca532e0b5a424ec642df388c578a12bd11abed052a2cc8666d4a7f48"},
-    {file = "eidolon_ai_usage_client-0.1.8.tar.gz", hash = "sha256:9a2a6bab6d5c456be6cc415f1a9d2feccba00e8caf1c004264795fbfd14ea377"},
+    {file = "eidolon_ai_usage_client-0.1.9-py3-none-any.whl", hash = "sha256:9508e85788c6739a5de805cc238c8133910cdd485045c897bcdad20b7e759ae2"},
+    {file = "eidolon_ai_usage_client-0.1.9.tar.gz", hash = "sha256:863b42b6ba3c5a698f0f65f85729aecca15720c06461e049a069b6adee272431"},
 ]
 
 [package.dependencies]
 httpx = ">=0.27.0,<0.28.0"
 pydantic = ">=2.6.4,<3.0.0"
-setuptools = ">=69.2.0,<70.0.0"
 
 [[package]]
 name = "emoji"
@@ -6120,4 +6119,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "d8c4136341a13acbdfb86bf25246a8958fad53237156eb2e8ea31272863e5fd4"
+content-hash = "e363150923aae15edec861199181d175c38b5855e08d857e6fc07e84731070bf"
