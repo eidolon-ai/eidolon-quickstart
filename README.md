@@ -1,20 +1,26 @@
-# Eidolon Agent Machine Template
+# Eidolon Agent Quickstart
 
 This project serves as a template for individuals interested in building agents with Eidolon.
+
+For a detailed guide, check out the [quickstart walkthrough](https://www.eidolonai.com/docs/quickstart) on our website.
 
 ## Directory Structure
 
 - `resources`: This directory contains additional resources for the project. An example agent is provided for reference.
 - `components`: This directory is where any custom code should be placed.
 
-## Running the Server in Docker
+## Getting Started
+
+### Clone the Project
 
 First you need to clone the project and navigate to the project directory:
 
 ```bash
-git clone https://github.com/eidolon-ai/agent-machine.git
-cd agent-machine
+git clone https://github.com/eidolon-ai/eidolon-quickstart.git
+cd eidolon-quickstart
 ```
+
+### Run your Agent Server in Docker
 
 Then run the server using docker, use the following command:
 
@@ -39,6 +45,27 @@ INFO - Building machine 'local_dev'
 INFO - Server Started in 1.50s
 ```
 
+### Try it out
+First download the Ediolon CLI
+```bash
+pip install 'eidolon-ai-client[cli]' -U
+```
+
+The create an AgentProcess
+```bash
+export PID=$(eidolon-cli processes create --agent hello-world)
+```
+
+Now that we have started a conversation, we can converse with our agent
+```bash
+eidolon-cli actions converse --process-id $PID --body "Hi! I made you"
+```
+
+You should see a response from your agent
+```
+Hello! 🎉 I'm super excited to be here and help you out!
+```
+
 ## Running the server in K8s
 
 ### Prerequisites
@@ -50,13 +77,6 @@ To use kubernetes for local development, you will need to have the following ins
 - [Docker](https://docs.docker.com/get-docker/)
 - [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
 - [Helm](https://helm.sh/docs/intro/install/)
-
-Clone the project and navigate to the project directory:
-
-```bash
-git clone https://github.com/eidolon-ai/agent-machine.git
-cd agent-machine
-```
 
 ### Installation
 
