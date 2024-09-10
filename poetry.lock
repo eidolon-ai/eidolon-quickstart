@@ -1452,13 +1452,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.124"
+version = "0.1.125"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.124-py3-none-any.whl", hash = "sha256:6e73e432f8e69fb9613ab6d33fb3887cfb7f8b71abd355b6b07cbe983da7273e"},
-    {file = "eidolon_ai_sdk-0.1.124.tar.gz", hash = "sha256:8d563f6522873f2da1efe958bea4d21c0c064b04243e830458a8d448e5f3e915"},
+    {file = "eidolon_ai_sdk-0.1.125-py3-none-any.whl", hash = "sha256:1e040ef5ae5ce760e9178ffe21f63f5f6abf8ba581bb8b8868773950751f4810"},
+    {file = "eidolon_ai_sdk-0.1.125.tar.gz", hash = "sha256:bd7eca300362dec5997f298736fb5d0cec97181405b9af24582316ce9a1975bc"},
 ]
 
 [package.dependencies]
@@ -1474,7 +1474,7 @@ chromadb = ">=0.4.18"
 dill = ">=0.3.8,<0.4.0"
 eidolon-ai-client = ">=0.1.35,<0.2.0"
 eidolon-ai-mistralai = ">=0.1.6a,<0.2.0"
-eidolon-ai-usage-client = ">=0.1.9,<0.2.0"
+eidolon-ai-usage-client = ">=0.1.10,<0.2.0"
 esprima = ">=4.0.1,<5.0.0"
 eval-type-backport = ">=0.2.0,<0.3.0"
 fastapi = ">=0.109.0"
@@ -1515,13 +1515,13 @@ all = ["playwright (>=1.43.0,<2.0.0)"]
 
 [[package]]
 name = "eidolon-ai-usage-client"
-version = "0.1.9"
+version = "0.1.10"
 description = ""
 optional = false
 python-versions = "<3.13,>=3.8"
 files = [
-    {file = "eidolon_ai_usage_client-0.1.9-py3-none-any.whl", hash = "sha256:9508e85788c6739a5de805cc238c8133910cdd485045c897bcdad20b7e759ae2"},
-    {file = "eidolon_ai_usage_client-0.1.9.tar.gz", hash = "sha256:863b42b6ba3c5a698f0f65f85729aecca15720c06461e049a069b6adee272431"},
+    {file = "eidolon_ai_usage_client-0.1.10-py3-none-any.whl", hash = "sha256:f1a7954e7b1ab5528dc0c81ab9fe0ef55ce6f7b74bc48d75f2ff9a876140cb5a"},
+    {file = "eidolon_ai_usage_client-0.1.10.tar.gz", hash = "sha256:39f3725720f83bf58b3880daec48efb3d3cedd5c7ced6a3b41cbf662f3afbe87"},
 ]
 
 [package.dependencies]
@@ -6119,4 +6119,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "e363150923aae15edec861199181d175c38b5855e08d857e6fc07e84731070bf"
+content-hash = "fea415abd2abe7b60d55d2cd8b0e4a0a2e738fe3ea5c33eb6b114d8aac6603a6"
