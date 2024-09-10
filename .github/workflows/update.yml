@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.ref }}
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
       - name: Install poetry
@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.ref }}
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
       - name: Install poetry
@@ -59,6 +59,7 @@ jobs:
           make poetry.lock
       - name: Syncing fork with upstream
         run: |
+          git config pull.rebase false
           git config --global user.email "autosync@eidolonai.com"
           git config --global user.name "autosync"
           make sync
