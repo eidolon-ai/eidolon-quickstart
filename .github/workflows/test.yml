@@ -15,6 +15,11 @@ jobs:
         run: pipx install poetry
       - name: test
         uses: ./.github/start-server
+      - uses: actions/upload-artifact@v4
+        if: ${{ !success() }}
+        with:
+          name: server-logs
+          path: container_logs.txt
 
   pytest:
     runs-on: ubuntu-latest
