@@ -19,7 +19,7 @@ services:
     command: /bound_resources/ -m local_dev --reload --fail-on-bad-agent true
 
   webui:
-    image: eidolonai/webui:latest
+    image: eidolonai/webui:1.0.67
     environment:
       - NEXTAUTH_SECRET=secret
       - EIDOLON_SERVER=http://agent-server:8080

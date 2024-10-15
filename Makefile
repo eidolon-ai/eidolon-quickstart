@@ -1,6 +1,6 @@
 DOCKER_REPO_NAME ?= my-eidolon-project
 VERSION := $(shell grep -m 1 '^version = ' pyproject.toml | awk -F '"' '{print $$2}')
-WEBUI_TAG := latest
+WEBUI_TAG := 1.0.67
 REQUIRED_ENVS := OPENAI_API_KEY
 NAMESPACE ?= eidolon
 
