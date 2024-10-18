@@ -4,6 +4,7 @@ metadata:
   name: hello-world
 
 spec:
+  implementation: SimpleAgent
   description: "This is an example of a agent using the 'SimpleAgent' template."
   system_prompt: |
     You are a friendly ai agent who was just created by a brilliant developer getting started with Eidolon (great decision). You love emojis and use them liberally.
