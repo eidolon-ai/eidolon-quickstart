@@ -16,7 +16,11 @@ services:
       - .env
     volumes:
       - ./resources:/bound_resources
-    command: /bound_resources/ -m local_dev --reload --fail-on-bad-agent true
+      - eidolon_data:/data/eidolon/files
+    command: /bound_resources/ -m sample-machine --reload --fail-on-bad-agent true
+    depends_on:
+      - mongo
+      - chromadb
 
   webui:
     image: eidolonai/webui:1.0.67
@@ -30,3 +34,26 @@ services:
       - "3000:3000"
     depends_on:
       - agent-server
+
+  mongo:
+    image: mongo
+    command:
+      - --dbpath
+      - /data/db
+      - --logpath
+      - /dev/null
+    volumes:
+      - mongodb_data:/data/db
+
+  chromadb:
+    image: chromadb/chroma
+    environment:
+      - CHROME_USER_DATA_DIR=/chromadb/data
+    volumes:
+      - chromadb_data:/chromadb/data
+
+
+volumes:
+  mongodb_data:
+  eidolon_data:
+  chromadb_data:

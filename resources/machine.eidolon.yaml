@@ -1,0 +1,37 @@
+apiVersion: server.eidolonai.com/v1alpha1
+kind: Machine
+metadata:
+  name: sample-machine
+
+spec:
+  ### The following fields are k8s only ###
+  image: my-eidolon-project:latest
+  imagePullPolicy: Never # WARNING: Change this for production or cloud based environments
+  # The environment variables to set in the machine. In this case, we are using a secret to set the environment variables named `eidolon`.
+  # These secrets are set up by the makefile
+  envFrom:
+    - secretRef:
+        name: eidolon
+  additionalVolumeMounts:
+    - name: eidolon-data
+      mountPath: /data/eidolon/files
+  additionalVolumes:
+    - name: eidolon-data
+      emptyDir: { }
+  ### </k8s only> ###
+
+  # We are persisting to a mongo database
+  symbolic_memory:
+    implementation: MongoSymbolicMemory
+    mongo_database_name: "agent-machine"
+    mongo_connection_string: "mongodb://mongo:27017/?directConnection=true"
+  similarity_memory:
+    implementation: SimilarityMemoryImpl
+    vector_store:
+      implementation: ChromaVectorStore
+      url: http://chromadb:8000
+  # Local dev uses volume mount. Production deployments will use alternative File Memory (ie, S3, Azure Blob Storage, etc)
+  # See https://www.eidolonai.com/docs/components/filememory/overview for alternatives
+  file_memory:
+    implementation: LocalFileMemory
+    root_dir: "/data/eidolon/files"
