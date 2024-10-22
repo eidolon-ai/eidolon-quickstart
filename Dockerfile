@@ -8,7 +8,7 @@ COPY components/ components/
 COPY README.md README.md
 RUN mkdir dist
 RUN touch dist/requirements.txt
-RUN poetry export --without-hashes --format=requirements.txt > dist/requirements.txt
+RUN poetry export --without dev --without-hashes --format=requirements.txt > dist/requirements.txt
 RUN poetry build
 
 FROM docker.io/eidolonai/sdk_base:$EIDOLON_VERSION as agent-machine-base
