@@ -11,7 +11,7 @@ from eidolon_ai_sdk.test_utils.vcr import vcr_patch
 def vcr_config():
     return dict(
         ignore_localhost=True,
-        filter_headers=[('authorization', '*****')],
+        filter_headers=[('authorization', '*****'), ('api-key', '*****')],
         match_on=['method', 'scheme', 'host', 'port', 'path', 'query', 'raw_body'],
     )
 
