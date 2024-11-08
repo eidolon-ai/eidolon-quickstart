@@ -12,6 +12,7 @@ def vcr_config():
     return dict(
         ignore_localhost=True,
         filter_headers=[('authorization', '*****')],
+        match_on=['method', 'scheme', 'host', 'port', 'path', 'query', 'raw_body'],
     )
 
 
