@@ -1420,13 +1420,13 @@ gmpy2 = ["gmpy2"]
 
 [[package]]
 name = "eidolon-ai-client"
-version = "0.1.37"
+version = "0.1.38"
 description = "Eidolon python client and CLI"
 optional = false
 python-versions = "<3.13,>=3.8"
 files = [
-    {file = "eidolon_ai_client-0.1.37-py3-none-any.whl", hash = "sha256:bf0c6d5b8b5c70bf6518192487782847a4e2b668129fc6c6f73688d2762a62cc"},
-    {file = "eidolon_ai_client-0.1.37.tar.gz", hash = "sha256:66d89fc8120c82fa450c2b8922e104edeaa980408d0bcd14b954baea92001e67"},
+    {file = "eidolon_ai_client-0.1.38-py3-none-any.whl", hash = "sha256:78a5579c23c5ba34d40ee33e5594fa2a2e7eb73728341d79056ad69b89efa3d4"},
+    {file = "eidolon_ai_client-0.1.38.tar.gz", hash = "sha256:b97eca3043e21c45e5c9703de54713dcc68bae2695d07876d74e2e9165cfa561"},
 ]
 
 [package.dependencies]
@@ -1459,13 +1459,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.153"
+version = "0.1.154"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.153-py3-none-any.whl", hash = "sha256:b54666ff45af24879db4bd4d5f3d73a9e36c9cc45b125bcdb7c3793f23b12550"},
-    {file = "eidolon_ai_sdk-0.1.153.tar.gz", hash = "sha256:8dce91d9851854f1061d51a0754781b3a40abf66e964e498d0a31dfcfed14e9c"},
+    {file = "eidolon_ai_sdk-0.1.154-py3-none-any.whl", hash = "sha256:bffacdd6f5e69cfcd97f1fe768b027aa801db1a0c06f3b98153e07f71c2f68ee"},
+    {file = "eidolon_ai_sdk-0.1.154.tar.gz", hash = "sha256:5502706f3f4d420fd64b2e78c6cafb61acc27db2ad6f6a2ca47bbc598311886b"},
 ]
 
 [package.dependencies]
@@ -1480,7 +1480,7 @@ boto3-stubs = {version = ">=1.34.74,<2.0.0", extras = ["essential"]}
 bs4 = ">=0.0.2,<0.0.3"
 chromadb-client = ">=0.5.15,<0.6.0"
 dill = ">=0.3.8,<0.4.0"
-eidolon-ai-client = ">=0.1.37,<0.2.0"
+eidolon-ai-client = ">=0.1.38,<0.2.0"
 eidolon-ai-mistralai = ">=0.1.6a,<0.2.0"
 eidolon-ai-usage-client = ">=0.1.10,<0.2.0"
 esprima = ">=4.0.1,<5.0.0"
@@ -5677,4 +5677,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "e33dc23a3c64efa5caa5dc710197f967857d132b065229e09546397907a5fe7a"
+content-hash = "2a0a6990015f9b9cdfac83c0f4a91542f6bb672ccd402a6553bc3a2f85a2784c"
