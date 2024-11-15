@@ -1,4 +1,4 @@
-ARG EIDOLON_VERSION=0.1.168
+ARG EIDOLON_VERSION=0.1.169
 FROM python:3.11-slim AS builder
 RUN pip install poetry
 RUN poetry config virtualenvs.create false --local
