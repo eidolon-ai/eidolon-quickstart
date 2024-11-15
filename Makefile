@@ -84,7 +84,7 @@ sync:
 	@if git remote | grep -q upstream; then \
 		echo "upstream already exists"; \
 	else \
-		git remote add upstream https://github.com/eidolon-ai/agent-machine.git; \
+		git remote add upstream https://github.com/eidolon-ai/base-agent-machine.git; \
 		echo "upstream added"; \
 	fi
 	git pull upstream main --no-edit --no-commit
