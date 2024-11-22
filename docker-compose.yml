@@ -12,12 +12,12 @@ services:
           action: rebuild
     ports:
       - "8080:8080"
-    env_file:
-      - .env
+    environment:
+      - PYTHONPATH=/local_mount
     volumes:
-      - ./resources:/bound_resources
+      - ./:/local_mount
       - eidolon_data:/data/eidolon/files
-    command: /bound_resources/ -m sample-machine --reload --fail-on-bad-agent true
+    command: /local_mount/resources/ -m sample-machine --reload --fail-on-bad-agent true --watch /local_mount/components --dotenv /local_mount/.env
     depends_on:
       - mongo
       - chromadb
