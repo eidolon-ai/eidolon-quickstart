@@ -1557,13 +1557,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.172"
+version = "0.1.174"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.172-py3-none-any.whl", hash = "sha256:335bc7d1cf8d8009baeeb25c5561a317607ee187b364d1d4c5a345dfffc4a322"},
-    {file = "eidolon_ai_sdk-0.1.172.tar.gz", hash = "sha256:e699c8c5b82d53ada0a4ffa11a4e2afe52ccb716746b6d5e16c3e5c417e64737"},
+    {file = "eidolon_ai_sdk-0.1.174-py3-none-any.whl", hash = "sha256:a589b102097c1f296cfbab5fcf256b2690f6ba0253615b176ebfe82fc4581bfb"},
+    {file = "eidolon_ai_sdk-0.1.174.tar.gz", hash = "sha256:7f6bedf2180ae5f16b7d3d61569427c783c664dd8fb0cbcbebcbd4a5e7f34e3f"},
 ]
 
 [package.dependencies]
@@ -6373,4 +6373,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "b315973fa90a44272e9fe73a009cda5e69e74e8802d1abc021348939252524c0"
+content-hash = "dcc2bb21ce2ee09c93696c778807cd2eabc5e4979c203f0eac3c1d25083cf4d6"
