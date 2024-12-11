@@ -1557,13 +1557,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.183"
+version = "0.1.184"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.183-py3-none-any.whl", hash = "sha256:efbe41f127e112f93ac570796f4a5c2eddc3ca98ad83b65b424e43a49516639f"},
-    {file = "eidolon_ai_sdk-0.1.183.tar.gz", hash = "sha256:c0d2a54556e791e8e6b28372cbfc4c866ce4ac27150d380f6e00a95e6483f85a"},
+    {file = "eidolon_ai_sdk-0.1.184-py3-none-any.whl", hash = "sha256:9e0fded86636008b7ac936cfe2fb2651ad7949c239640f79e15b4c5b8e1b7dd6"},
+    {file = "eidolon_ai_sdk-0.1.184.tar.gz", hash = "sha256:2c6a081fb2c80505aa3bd1c89f3e0c490150319bc3ccefae5d87550eb2d51c56"},
 ]
 
 [package.dependencies]
@@ -1583,7 +1583,7 @@ dulwich = ">=0.22.6,<0.23.0"
 eidolon-ai-client = ">=0.1.40,<0.2.0"
 eidolon-ai-mistralai = ">=0.1.6a,<0.2.0"
 eidolon-ai-usage-client = ">=0.1.10,<0.2.0"
-eidolon-browser-service = ">=0.1.6,<0.2.0"
+eidolon-browser-service = ">=0.1.7,<0.2.0"
 esprima = ">=4.0.1,<5.0.0"
 eval-type-backport = ">=0.2.0,<0.3.0"
 fastapi = ">=0.109.0"
@@ -1641,13 +1641,13 @@ pydantic = ">=2.6.4,<3.0.0"
 
 [[package]]
 name = "eidolon-browser-service"
-version = "0.1.6"
+version = "0.1.7"
 description = "Lightweight playwright wrapper for AI Agents"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_browser_service-0.1.6-py3-none-any.whl", hash = "sha256:f34f55be1130b13dc6011ef45aa73e86cc5edb6b946307849ef5b0a6d4e6e494"},
-    {file = "eidolon_browser_service-0.1.6.tar.gz", hash = "sha256:ade8fa1c4dbd55971ce50f4820e4366fd5923924ed21467b5e69cec2a6db5aa5"},
+    {file = "eidolon_browser_service-0.1.7-py3-none-any.whl", hash = "sha256:afd8552a13a5dd51a77748812d8f60541fb14c4c072dedbac7a253c2f44afda0"},
+    {file = "eidolon_browser_service-0.1.7.tar.gz", hash = "sha256:f5c8be34e0ef969ca9bba257d1fa873ec9a3b5ce8a6add4df325c2fb50333775"},
 ]
 
 [package.dependencies]
@@ -6417,4 +6417,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "beccfbd0a7bd5991033fef511177325eb1d09b9ba427e93172400fe3612e7405"
+content-hash = "e34488917821f48fa41d47fb8bc62c3e1f1863aab8f469505cdb96bca359744c"
