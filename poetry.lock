@@ -1557,13 +1557,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.182"
+version = "0.1.183"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.182-py3-none-any.whl", hash = "sha256:116fea0eed9e3616603b8110c6b1ac1f775c0528a1ac72cda25ea334a8211e91"},
-    {file = "eidolon_ai_sdk-0.1.182.tar.gz", hash = "sha256:651933b404b259b9e2617d24ad0c1ebe8a37744c944f27d106f2380a6b08e04b"},
+    {file = "eidolon_ai_sdk-0.1.183-py3-none-any.whl", hash = "sha256:efbe41f127e112f93ac570796f4a5c2eddc3ca98ad83b65b424e43a49516639f"},
+    {file = "eidolon_ai_sdk-0.1.183.tar.gz", hash = "sha256:c0d2a54556e791e8e6b28372cbfc4c866ce4ac27150d380f6e00a95e6483f85a"},
 ]
 
 [package.dependencies]
@@ -1583,7 +1583,7 @@ dulwich = ">=0.22.6,<0.23.0"
 eidolon-ai-client = ">=0.1.40,<0.2.0"
 eidolon-ai-mistralai = ">=0.1.6a,<0.2.0"
 eidolon-ai-usage-client = ">=0.1.10,<0.2.0"
-eidolon-browser-service = ">=0.1.5,<0.2.0"
+eidolon-browser-service = ">=0.1.6,<0.2.0"
 esprima = ">=4.0.1,<5.0.0"
 eval-type-backport = ">=0.2.0,<0.3.0"
 fastapi = ">=0.109.0"
@@ -1641,21 +1641,20 @@ pydantic = ">=2.6.4,<3.0.0"
 
 [[package]]
 name = "eidolon-browser-service"
-version = "0.1.5"
+version = "0.1.6"
 description = "Lightweight playwright wrapper for AI Agents"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_browser_service-0.1.5-py3-none-any.whl", hash = "sha256:faed81bba8193019712dfb686f8ebb7dca2e67c6fa0f4d0317de0db71e01e562"},
-    {file = "eidolon_browser_service-0.1.5.tar.gz", hash = "sha256:0c1081e00a3d31522ef425c270ed331c860150ccf3a89bc9b4d674a2d4cdda31"},
+    {file = "eidolon_browser_service-0.1.6-py3-none-any.whl", hash = "sha256:f34f55be1130b13dc6011ef45aa73e86cc5edb6b946307849ef5b0a6d4e6e494"},
+    {file = "eidolon_browser_service-0.1.6.tar.gz", hash = "sha256:ade8fa1c4dbd55971ce50f4820e4366fd5923924ed21467b5e69cec2a6db5aa5"},
 ]
 
 [package.dependencies]
-playwright = ">=1.49.0,<2.0.0"
 pydantic = ">=2.10.3,<3.0.0"
 
 [package.extras]
-server = ["fastapi[standard] (>=0.115.6,<0.116.0)"]
+server = ["fastapi[standard] (>=0.115.6,<0.116.0)", "playwright (>=1.49.0,<2.0.0)"]
 
 [[package]]
 name = "esprima"
@@ -4275,26 +4274,6 @@ typing = ["typing-extensions"]
 xmp = ["defusedxml"]
 
 [[package]]
-name = "playwright"
-version = "1.49.0"
-description = "A high-level API to automate web browsers"
-optional = false
-python-versions = ">=3.9"
-files = [
-    {file = "playwright-1.49.0-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:704532a2d8ba580ec9e1895bfeafddce2e3d52320d4eb8aa38e80376acc5cbb0"},
-    {file = "playwright-1.49.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:e453f02c4e5cc2db7e9759c47e7425f32e50ac76c76b7eb17c69eed72f01c4d8"},
-    {file = "playwright-1.49.0-py3-none-macosx_11_0_universal2.whl", hash = "sha256:37ae985309184472946a6eb1a237e5d93c9e58a781fa73b75c8751325002a5d4"},
-    {file = "playwright-1.49.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:68d94beffb3c9213e3ceaafa66171affd9a5d9162e0c8a3eed1b1132c2e57598"},
-    {file = "playwright-1.49.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:7f12d2aecdb41fc25a624cb15f3e8391c252ebd81985e3d5c1c261fe93779345"},
-    {file = "playwright-1.49.0-py3-none-win32.whl", hash = "sha256:91103de52d470594ad375b512d7143fa95d6039111ae11a93eb4fe2f2b4a4858"},
-    {file = "playwright-1.49.0-py3-none-win_amd64.whl", hash = "sha256:34d28a2c2d46403368610be4339898dc9c34eb9f7c578207b4715c49743a072a"},
-]
-
-[package.dependencies]
-greenlet = "3.1.1"
-pyee = "12.0.0"
-
-[[package]]
 name = "pluggy"
 version = "1.5.0"
 description = "plugin and hook calling mechanisms for python"
@@ -4549,23 +4528,6 @@ files = [
 
 [package.dependencies]
 typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
-
-[[package]]
-name = "pyee"
-version = "12.0.0"
-description = "A rough port of Node.js's EventEmitter to Python with a few tricks of its own"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "pyee-12.0.0-py3-none-any.whl", hash = "sha256:7b14b74320600049ccc7d0e0b1becd3b4bd0a03c745758225e31a59f4095c990"},
-    {file = "pyee-12.0.0.tar.gz", hash = "sha256:c480603f4aa2927d4766eb41fa82793fe60a82cbfdb8d688e0d08c55a534e145"},
-]
-
-[package.dependencies]
-typing-extensions = "*"
-
-[package.extras]
-dev = ["black", "build", "flake8", "flake8-black", "isort", "jupyter-console", "mkdocs", "mkdocs-include-markdown-plugin", "mkdocstrings[python]", "pytest", "pytest-asyncio", "pytest-trio", "sphinx", "toml", "tox", "trio", "trio", "trio-typing", "twine", "twisted", "validate-pyproject[all]"]
 
 [[package]]
 name = "pygments"
@@ -6455,4 +6417,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "07c3f905b897094cc7e55ed61b0f472f3230811ba2a8c3bc7791ce3eb576310c"
+content-hash = "beccfbd0a7bd5991033fef511177325eb1d09b9ba427e93172400fe3612e7405"
