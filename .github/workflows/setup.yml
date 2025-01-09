@@ -27,7 +27,7 @@ jobs:
           fi
       - name: Install poetry
         if: steps.check_fresh.outputs.is_fresh == 'true'
-        run: pipx install poetry
+        run: pipx install poetry==1.8
       - name: Example setup step
         if: steps.check_fresh.outputs.is_fresh == 'true'
         run: |

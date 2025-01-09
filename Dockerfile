@@ -1,6 +1,6 @@
 ARG EIDOLON_VERSION=0.1.184
 FROM python:3.11-slim AS builder
-RUN pip install poetry
+RUN pip install poetry==1.8
 RUN poetry config virtualenvs.create false --local
 COPY pyproject.toml pyproject.toml
 RUN poetry remove --lock eidolon-ai-sdk

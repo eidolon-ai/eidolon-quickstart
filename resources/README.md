@@ -1,18 +1,18 @@
 # Machine Resources
 
-This is where you will define additional agents or components for your Agent Machine.
+This is where you will define additional agents and resources for your Agent Machine.
 
 Here is an example of a simple agent you can add to your machine:
 
-```yaml
+```yaml "title=hello-world-agent.yaml"
 apiVersion: server.eidolonai.com/v1alpha1
 kind: Agent
 metadata:
-  name: hello-world
+  name: hello-world-agent
 
 spec:
-  description: "This is an example of a generic agent which greets people by name."
-  system_prompt: "You are a friendly greeter who greets people by name while using emojis"
+  description: "This is a general agent that uses an LLM to answer questions."
+  system_prompt: "You are a friendly assistant that thinks carefully before responding to questions."
 ```
 
 You can add this to your machine by creating a new file in the `resources` directory. The file can be named anything you like, but should have a `.eidolon.yaml` extension.

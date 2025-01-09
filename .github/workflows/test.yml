@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install poetry
-        run: pipx install poetry
+        run: pipx install poetry==1.8
       - name: test
         uses: ./.github/start-server
       - uses: actions/upload-artifact@v4
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install poetry
         run: |
-          pipx install poetry
+          pipx install poetry==1.8
           make poetry.lock
       - uses: actions/setup-python@v5
         with:
